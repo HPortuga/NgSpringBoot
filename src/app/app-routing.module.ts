@@ -5,13 +5,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { LogoutComponent } from './logout/logout.component';
+import { RouteGuardService } from './service/route-guard.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'logout', component: LogoutComponent},
-  {path: 'welcome/:name', component: WelcomeComponent},
-  {path: 'todos', component: ListTodosComponent},
+  {path: 'logout', component: LogoutComponent, canActivate:[RouteGuardService]},
+  {path: 'welcome/:name', component: WelcomeComponent, canActivate:[RouteGuardService]},
+  {path: 'todos', component: ListTodosComponent, canActivate:[RouteGuardService]},
   {path: '**', component: ErrorComponent}
 ];
 
