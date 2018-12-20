@@ -42,6 +42,18 @@ public class TodoHardcodedService {
       return null;
    }
 
+   public Todo save(Todo todo) {
+      if (todo.getId() == -1 || todo.getId() == 0) {
+         todo.setId(++idCounter);
+         todos.add(todo);
+      } else {
+         deleteById(todo.getId());
+         todos.add(todo);
+      }
+
+      return todo;
+   }
+
    @Override
    public int hashCode() {
       return super.hashCode();

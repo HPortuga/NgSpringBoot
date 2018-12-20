@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../service/data/todo-data.service';
 import { Todo } from '../list-todos/list-todos.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -15,7 +15,8 @@ export class TodoComponent implements OnInit {
 
   constructor(
     private todoService: TodoDataService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -27,7 +28,10 @@ export class TodoComponent implements OnInit {
   }
 
   saveTodo() {
-
+    this.todoService.updateTodo('in28minutes', this.id, this.todo)
+      .subscribe(
+        data => this.router.navigate(['todos'])
+    );
   }
   
 }
