@@ -1,6 +1,7 @@
 package com.rest.webservices.resfulwebservices.basic.auth;
 
 public class AuthenticationBean {
+
    private String message;
 
    public AuthenticationBean(String message) {
@@ -17,8 +18,7 @@ public class AuthenticationBean {
 
    @Override
    public String toString() {
-      return "AuthenticationBean{" +
-            "message='" + message + '\'' +
-            '}';
+      return String.format("HelloWorldBean [message=%s]", message);
    }
+
 }
