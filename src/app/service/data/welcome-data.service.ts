@@ -15,23 +15,11 @@ export class WelcomeDataService {
   ) { }
 
   executeHelloWorldBeanService() {
-    return this.http.get<HelloWorldBean>('http://localhost:8080/hello-world-bean');
+    return this.http.get<HelloWorldBean>('${API_URL}/hello-world-bean');
   }
 
   executeHelloWorldBeanServiceWithPathVariable(name) {
-    let basicAuthHeaderString = this.createBasicAuthenticationHttpHeader();
-    let headers = new HttpHeaders({Authorization: basicAuthHeaderString});
-
     return this.http.get<HelloWorldBean>(
-      `http://localhost:8080/hello-world/path-variable/${name}`, {headers}
-    );
-  }
-
-  createBasicAuthenticationHttpHeader() {
-    let username = 'matheus';
-    let password = 'pass';
-    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
-
-    return basicAuthHeaderString;
+      `${API_URL}/hello-world/path-variable/${name}`);
   }
 }
