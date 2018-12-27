@@ -31,7 +31,7 @@ export class ListTodosComponent implements OnInit {
   }
 
   deleteTodo(id) {
-    this.todoService.deleteTodo('in28minutes', id).subscribe(
+    this.todoService.deleteTodo('matheus', id).subscribe(
       response => {
         this.refreshTodos();
         this.message = `Todo ${id} deleted!`;
@@ -44,7 +44,7 @@ export class ListTodosComponent implements OnInit {
   }
 
   refreshTodos() {
-    this.todoService.retrieveAllTodos('in28minutes').subscribe(
+    this.todoService.retrieveAllTodos('matheus').subscribe(
       response => {
         console.log(response);        
         this.todos = response;

@@ -24,20 +24,20 @@ export class TodoComponent implements OnInit {
     this.todo = new Todo(this.id, '', false, new Date());
 
     if (this.id != -1) {
-      this.todoService.retrieveTodo('in28minutes', this.id).subscribe(
+      this.todoService.retrieveTodo('matheus', this.id).subscribe(
         data => this.todo = data
       );
     }
   }
 
   saveTodo() {
-    if (this.id === -1) {
-      this.todoService.createTodo('in28minutes', this.todo)
+    if (this.id == -1) {
+      this.todoService.createTodo('matheus', this.todo)
         .subscribe(
           data => this.router.navigate(['todos'])
       );
     } else {
-      this.todoService.updateTodo('in28minutes', this.id, this.todo)
+      this.todoService.updateTodo('matheus', this.id, this.todo)
         .subscribe(
           data => this.router.navigate(['todos'])
       );
